@@ -1,13 +1,34 @@
-const BASE_URL = 'https://pixabay.com'
-// const key ='24180904-cdf25eb395cc9b94381638218'
+const API_KEY = '24180904-cdf25eb395cc9b94381638218';
+const BASE_URL = 'https://pixabay.com';
 
-export default function fetchImages(text, page) {
-    return  fetch(`${BASE_URL}/api/?image_type=photo&orientation=horizontal&q=${text}&page=${page}&per_page=12&key=24180904-cdf25eb395cc9b94381638218`)
-    .then(response => {
-        if(responce.ok) return response.json();
-        throw new Error('Error fetching data');
-    })
-    .catch (error => {
-        console.log('Error: ', error);
+
+export default class NewsApiService {
+  constructor() {
+    this.page = 1;
+  }
+
+  fetchImages(searchQuery) {
+    const url = `${BASE_URL}/api/?image_type=photo&orientation=horizontal&q=${searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
+
+    return fetch(url).then(response => {
+      if (response.ok) this.incrementPage();
+      return response.json();
     });
+  }
+
+  incrementPage() {
+    this.page += 1;
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  get query() {
+    return this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
 }

@@ -1,0 +1,30 @@
+.search-form {
+    margin: 20px;
+}
+.gallery-item{
+    list-style: none;
+}
+
+.gallery {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.stats{
+    display: flex;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 20px 20px 20px;
+    margin-bottom: 10px;
+}
+
+.stats-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.material-icons{
+    margin-right: 10px;
+}
