@@ -6,11 +6,12 @@ import getRefs from './get-refs';
 
 import onFetchError from './error';
 import infScroll from './inf-scroll';
+import * as _ from 'lodash';
 
 const refs = getRefs();
 const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener('input', onInputChange);
+refs.searchForm.addEventListener("input", _.debounce(onInputChange, 500));
 
 function onInputChange(evt) {
   evt.preventDefault();
@@ -18,14 +19,12 @@ function onInputChange(evt) {
   const form = evt.currentTarget;
   const searchQuery = form.elements.query.value;
 
-
   newsApiService
     .fetchImages(searchQuery)
     .then(appendImagesMarkup)
     .catch(onFetchError)
     .finally(() => searchQuery === '');
 }
-
 
 function appendImagesMarkup(images) {
   // const murkupImages = ImageListTpl(images);

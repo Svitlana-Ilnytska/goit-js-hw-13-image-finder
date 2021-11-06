@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "hbs": "^4.1.2",
-    "infinite-scroll": "^4.0.1"
+    "infinite-scroll": "^4.0.1",
+    "lodash.debounce": "^4.0.8"
   }
 }
