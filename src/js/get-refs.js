@@ -3,5 +3,6 @@ export default function getRefs() {
     photoCard: document.querySelector('.gallery-item'),
     photoList: document.querySelector('.gallery'),
     searchForm: document.querySelector('.search-form'),
+    input: document.querySelector("#controls input"),
     };
 }

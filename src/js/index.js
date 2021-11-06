@@ -11,7 +11,8 @@ import * as _ from 'lodash';
 const refs = getRefs();
 const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener("input", _.debounce(onInputChange, 500));
+refs.searchForm.addEventListener('input', onInputChange);
+// refs.searchForm.addEventListener("input", _.debounce(onInputChange, 500));
 
 function onInputChange(evt) {
   evt.preventDefault();
@@ -31,8 +32,9 @@ function appendImagesMarkup(images) {
   // refs.photoList.innerHTML = murkupImages;
   if (images.hits.length >= 1) {
     refs.photoList.insertAdjacentHTML('beforeend', ImageCardTpl(images.hits));
-    scroll();
-  } else {
-    throw new Error('error');
+
+    infScroll();
+  } else if (refs.input.value = "") {
+    refs.photoCard.innerHTML = '';
   }
 }
