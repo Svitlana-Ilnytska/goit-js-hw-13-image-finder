@@ -4,5 +4,6 @@ export default function getRefs() {
     photoList: document.querySelector('.gallery'),
     searchForm: document.querySelector('.search-form'),
     input: document.querySelector("#controls input"),
+    sentinel: document.querySelector('#sentinel'),
     };
 }

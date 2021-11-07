@@ -6,7 +6,7 @@ import '@pnotify/core/dist/BrightTheme.css';
 export default function onFetchError() {
     error({
       title: false,
-      text: 'Too many matches found. Please enter a more specific query!=)',
+      text: 'Вибачте, нічого не знайдено за цією назвою ¯\_(ツ)_/¯',
       shadow: true,
       delay: 2000,
     });

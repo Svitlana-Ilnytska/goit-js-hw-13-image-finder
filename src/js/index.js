@@ -11,15 +11,20 @@ import * as _ from 'lodash';
 const refs = getRefs();
 const newsApiService = new NewsApiService();
 
-refs.searchForm.addEventListener('input', onInputChange);
-// refs.searchForm.addEventListener("input", _.debounce(onInputChange, 500));
+// refs.searchForm.addEventListener('input', onInputChange);
+refs.searchForm.addEventListener("input", _.debounce(onInputChange, 1000));
 
 function onInputChange(evt) {
   evt.preventDefault();
 
-  const form = evt.currentTarget;
-  const searchQuery = form.elements.query.value;
+  // const form = evt.target;
+  const searchQuery = evt.target.value;
 
+  if (searchQuery === '') {
+    return (refs.photoList.innerHTML = '');
+  }
+  newsApiService.resetPage();
+  clearArticlesContainer();
   newsApiService
     .fetchImages(searchQuery)
     .then(appendImagesMarkup)
@@ -28,13 +33,13 @@ function onInputChange(evt) {
 }
 
 function appendImagesMarkup(images) {
-  // const murkupImages = ImageListTpl(images);
-  // refs.photoList.innerHTML = murkupImages;
+  refs.photoList.innerHTML = '';
   if (images.hits.length >= 1) {
     refs.photoList.insertAdjacentHTML('beforeend', ImageCardTpl(images.hits));
-
-    infScroll();
-  } else if (refs.input.value = "") {
-    refs.photoCard.innerHTML = '';
+  } else {
+    onFetchError();
   }
+}
+function clearArticlesContainer() {
+  refs.photoList.innerHTML = '';
 }
