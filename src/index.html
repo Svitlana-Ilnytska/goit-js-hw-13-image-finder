@@ -18,17 +18,16 @@
       <input type="text" name="query" id='controls input' autocomplete="off" placeholder="Search images..." />
     </form>
     <ul class="gallery"></ul>
-<div id="sentinel"> </div>
-    <!-- <div class="lightbox js-lightbox">
-      <div class="lightbox__overlay"></div>
+<div id="gallery"> </div>
 
-      <div class="lightbox__content">
-        <img class="lightbox__image" src="" alt="" />
-      </div>
 
-      <button type="button" class="lightbox__button" data-action="close-lightbox"></button>
-    </div> -->
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+
+<div class="loading">
+	<div class="ball"></div>
+	<div class="ball"></div>
+	<div class="ball"></div>
+</div>
+ 
     <script src="../src/js/index.js"></script>
     <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
   </body>
