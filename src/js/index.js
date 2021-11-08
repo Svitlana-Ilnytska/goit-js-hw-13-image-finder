@@ -5,7 +5,7 @@ import NewsApiService from './apiService';
 import getRefs from './get-refs';
 
 import onFetchError from './error';
-import infScroll from './inf-scroll';
+import './inf-scroll';
 import * as _ from 'lodash';
 
 const loading = document.querySelector('.loading');
@@ -24,19 +24,19 @@ window.addEventListener('scroll', () => {
 function showLoading() {
   loading.classList.add('show');
 
-  setTimeout(getNewsApiService, 1000);
+  // setTimeout(getNewsApiService, 1000);
 }
-function getNewsApiService() {
-  // evt.preventDefault();
-  const searchQuery = refs.input.value;
+// function getNewsApiService() {
+//   // evt.preventDefault();
+//   const searchQuery = refs.input.value;
 
-  newsApiService.incrementPage();
-  newsApiService
-    .fetchImages(searchQuery)
-    .then(appendImagesMarkup)
-    .catch(onFetchError)
-    .finally(() => searchQuery === '');
-}
+//   newsApiService.incrementPage();
+//   newsApiService
+//     .fetchImages(searchQuery)
+//     .then(appendImagesMarkup)
+//     .catch(onFetchError)
+//     .finally(() => loading.classList.remove('show'));
+// }
 
 // refs.searchForm.addEventListener('input', onInputChange);
 refs.searchForm.addEventListener('input', _.debounce(onInputChange, 1000));
@@ -57,7 +57,7 @@ function onInputChange(evt) {
     .fetchImages(searchQuery)
     .then(appendImagesMarkup)
     .catch(onFetchError)
-    .finally(() => searchQuery === '');
+    .finally(() => loading.classList.remove('show'));
 }
 
 function appendImagesMarkup(images) {
