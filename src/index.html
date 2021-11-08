@@ -15,8 +15,9 @@
   <body>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
     <form class="search-form" id="search-form">
-      <input type="text" name="query" id='controls input' autocomplete="off" placeholder="Search images..." />
-    </form>
+      <label class="search-label"> Що тобі знайти?  (ง°ل͜°)ง
+      <input type="text" name="query" id='controls input' autocomplete="off" class="search-input"/>
+    </form></label>
     <ul class="gallery"></ul>
 <div id="gallery"> </div>
 
@@ -27,7 +28,19 @@
 	<div class="ball"></div>
 	<div class="ball"></div>
 </div>
- 
+<button
+      type="button"
+      class="btn btn-primary button"
+      data-action="load-more"
+    >
+      <span
+        class="spinner-border spinner-border-sm spinner is-hidden"
+        role="status"
+        aria-hidden="true"
+      ></span>
+
+      <span class="label">Показать ещё</span>
+    </button>
     <script src="../src/js/index.js"></script>
     <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
   </body>
