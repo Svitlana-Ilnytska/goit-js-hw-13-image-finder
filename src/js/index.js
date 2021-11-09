@@ -56,7 +56,7 @@ function appendImagesMarkup(images) {
   } else {
     onFetchError();
     loadMoreBtn.hide();
-    this.refs.loading.classList.remove('show');
+    refs.loading.classList.remove('show');
   }
 }
 function clearImagesContainer() {
