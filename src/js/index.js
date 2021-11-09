@@ -19,6 +19,11 @@ const loadMoreBtn = new LoadMoreBtn({
 
 refs.searchForm.addEventListener('input', _.debounce(onInputChange, 1000));
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
+refs.searchInput.addEventListener('keypress', function(e){
+  if(e.which === 13){
+  	e.preventDefault();
+    onInputChange;
+  }})
 
 function onInputChange(evt) {
   evt.preventDefault();
@@ -51,6 +56,7 @@ function appendImagesMarkup(images) {
   } else {
     onFetchError();
     loadMoreBtn.hide();
+    this.refs.loading.classList.remove('show');
   }
 }
 function clearImagesContainer() {

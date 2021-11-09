@@ -16,7 +16,7 @@ export default class LoadMoreBtn {
 
   enable() {
     this.refs.button.disabled = false;
-    this.refs.label.textContent = 'Показати ще?';
+    this.refs.label.textContent = 'Жми сюди, якщо хочеш ще';
     this.refs.loading.classList.add('show');
   }
 
@@ -28,9 +28,11 @@ export default class LoadMoreBtn {
 
   show() {
     this.refs.button.classList.remove('is-hidden');
+    this.refs.loading.classList.add('show');
   }
 
   hide() {
     this.refs.button.classList.add('is-hidden');
+    this.refs.loading.classList.remove('show');
   }
 }
